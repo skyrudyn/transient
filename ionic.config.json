@@ -1,0 +1,8 @@
+{
+  "name": "transient",
+  "app_id": "1eed6183",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
