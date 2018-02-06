@@ -1,0 +1,29 @@
+<ion-header>
+
+    <ion-navbar>
+      <ion-title>Available Job List</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+<ion-content>
+	<ion-list>
+		<div *ngFor="let jobs of allJob">
+			<ion-item >
+				<ion-grid>
+					<ion-row align-items-center>
+              <ion-col col-auto justify-content-start>
+                  <ion-icon name="md-images"></ion-icon>
+                </ion-col>
+                  <ion-col (click)="viewJob(jobs)" text-wrap>
+                      Job Name : {{jobs.eventName}} <br/>
+                      Job Location : {{jobs.eventLocation}} <br/>
+                      Job Date : {{jobs.eventDate}} <br/>
+                </ion-col>
+
+					</ion-row>
+				</ion-grid>
+			</ion-item>
+		</div>
+	</ion-list>
+
+</ion-content>

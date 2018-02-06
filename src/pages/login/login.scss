@@ -1,0 +1,33 @@
+page-login {
+    
+    ion-icon.nav_back{
+        position: fixed;
+        left: 20px;
+        top: 30px;
+        font-size: 26px;
+    }
+    ion-content{
+        background: url(../assets/images/register_background.png);
+        background-color: #3C4858;
+        background-size: cover;
+        background-position: center;
+    }
+    div.div_form{
+        margin-top: 150px;
+    }
+    ion-item.form-item{
+        border-radius: 50px;
+        margin: 10px 0px;
+    }
+    div.div_forgot_password span{
+        // color: $blue;
+    }
+    .socialbuttons ion-icon{
+        margin-right: 10px;
+        font-size: 24px;
+    }
+    .socialbuttons{
+        margin-bottom: 20px;
+    }
+    
+}
