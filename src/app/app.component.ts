@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { MenuController } from 'ionic-angular'
 import { FirstViewPage } from '../pages/first-view/first-view';
 
 @Component({
@@ -18,5 +18,9 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
     });
+  }
+  openPage(p) {
+    console.log(p)
+    this.rootPage = p;
   }
 }

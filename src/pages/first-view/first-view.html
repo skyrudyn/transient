@@ -1,18 +1,104 @@
-<!--
-  Generated template for the FirstViewPage page.
+<!-- <ion-header> -->
+  <ion-navbar hideBackButton>
 
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<!-- <ion-header>
-
-  <ion-navbar>
-    <ion-title>FirstView</ion-title>
+      <!-- <button ion-button icon-only menuToggle>
+          <ion-icon name="menu"></ion-icon>
+      </button> -->
+    <ion-title style="text-align:center">Banquet Servitor</ion-title>
   </ion-navbar>
+<!-- </ion-header> -->
+  <ion-item>
+    <ion-label>Filter</ion-label>
+    <ion-toggle (ionChange)="showFilters($event)"></ion-toggle>
+  </ion-item>
 
-</ion-header> -->
+  <ion-item *ngIf="showFilter">
+      <ion-label>Filter by :</ion-label>
+      <ion-select [(ngModel)]="filterType" (ionChange)="selectedFilter(filterType)">
+        <ion-option value="" selected>-Select-</ion-option>
+        <ion-option value="1">Date Calendar</ion-option>
+        <ion-option value="2">Location</ion-option>
+      </ion-select>
+    </ion-item>
+<div *ngIf="!showLocation && !showCalendar">
+        <ion-list>
+          <div *ngFor="let jobs of alljobs">
+            <ion-item>
+              <ion-grid>
+                <ion-row align-items-center>
+    
+                  <ion-col col-auto justify-content-start style="width:100%" text-wrap>
+                    <div>
+                      Job Name : {{jobs.eventName}}
+                      <br/> Job Location : {{jobs.eventLocation}}
+                      <br/> Job Date : {{jobs.eventDate | date: 'dd/MM/yyyy'}}
+                      <br/>
+                    </div>
+                    <div>
+                      <button ion-button block style="width:100%" (click)="applyCheck(jobs)">Apply</button>
+                    </div>
+                  </ion-col>
+                  <!-- <ion-col text-wrap>
+                         
+                    </ion-col> -->
+    
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+            </div>
+        </ion-list>
+    <!-- <ion-list>
+        <div *ngFor="let jobs of allJob">
+          <ion-item >
+            <ion-grid>
+              <ion-row align-items-center>
+                  <ion-col col-auto justify-content-start>
+                      <ion-icon name="md-images"></ion-icon>
+                    </ion-col>
+                      <ion-col (click)="viewJob(jobs)" text-wrap>
+                          Job Name : {{jobs.eventName}} <br/>
+                          Job Location : {{jobs.eventLocation}} <br/>
+                          Job Date : {{jobs.eventDate}} <br/>
+                    </ion-col>
+    
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </div>
+      </ion-list> -->
+</div>
+<div *ngIf="showLocation"></div>
+<div *ngIf="showCalendar">
+  <ion-calendar [(ngModel)]="date"  (onChange)="onChange($event)" [type]="type" [format]="'YYYY-MM-DD'">
+  </ion-calendar >
+  <hr/>
+  <div *ngIf="filteredJob">
+    <ion-list>
+      <div *ngFor="let jobs of filteredJob">
+        <ion-item>
+          <ion-grid>
+            <ion-row align-items-center>
 
+              <ion-col col-auto justify-content-start style="width:100%" text-wrap>
+                <div>
+                  Job Name : {{jobs.eventName}}
+                  <br/> Job Location : {{jobs.eventLocation}}
+                  <br/> Job Date : {{jobs.eventDate | date: 'dd/MM/yyy'}}
+                  <br/>
+                </div>
+                <div>
+                  <button ion-button  block style="width:100%" (click)="applyCheck(jobs)">Apply</button>
+                </div>
+              </ion-col>
+              <!-- <ion-col text-wrap>
+                     
+                </ion-col> -->
 
-<ion-content padding>
-  <button ion-button full round (click)="login()">Login</button>
-</ion-content>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </div>
+    </ion-list>
+    <br/><br/><br/>
+  </div>
+</div>

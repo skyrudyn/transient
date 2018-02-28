@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the LogoutPage page.
+ * Generated class for the SettingPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,17 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-logout',
-  templateUrl: 'logout.html',
+  selector: 'page-setting',
+  templateUrl: 'setting.html',
 })
-export class LogoutPage {
+export class SettingPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    sessionStorage.clear();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LogoutPage');
+    console.log('ionViewDidLoad SettingPage');
   }
 
 }

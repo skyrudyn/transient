@@ -9,13 +9,18 @@ import { LoginPageModule } from '../pages/login/login.module';
 import { LogoutPageModule } from '../pages/logout/logout.module';
 import { MainPageModule } from '../pages/main/main.module';
 import { ProfilePageModule } from '../pages/profile/profile.module';
+import { SettingPageModule } from '../pages/setting/setting.module';
+import { SavedJobPageModule } from '../pages/saved-job/saved-job.module';
+import { AppliedJobPageModule } from '../pages/applied-job/applied-job.module';
 import { ForgotPasswordPageModule } from '../pages/forgot-password/forgot-password.module';
-
+import {RegisterPageModule} from '../pages/register/register.module';
+import {RegisterVerifyPageModule} from '../pages/register-verify/register-verify.module';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ServiceProvider } from '../providers/service/service';
 import { HttpModule } from '@angular/http';
 
+import { CalendarModule } from "ion2-calendar";
 @NgModule({
   declarations: [
     MyApp,
@@ -29,7 +34,13 @@ import { HttpModule } from '@angular/http';
     MainPageModule,
     ProfilePageModule,
     HttpModule,
+    SettingPageModule,
+    SavedJobPageModule,
     ForgotPasswordPageModule,
+    CalendarModule,
+    RegisterPageModule,
+    RegisterVerifyPageModule,
+    AppliedJobPageModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
