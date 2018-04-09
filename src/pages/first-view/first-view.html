@@ -1,12 +1,14 @@
-<!-- <ion-header> -->
+<ion-header>
   <ion-navbar hideBackButton>
 
-      <!-- <button ion-button icon-only menuToggle>
+      <button ion-button icon-only menuToggle>
           <ion-icon name="menu"></ion-icon>
-      </button> -->
+      </button>
     <ion-title style="text-align:center">Banquet Servitor</ion-title>
   </ion-navbar>
-<!-- </ion-header> -->
+</ion-header>
+
+<ion-content #scrollContent>
   <ion-item>
     <ion-label>Filter</ion-label>
     <ion-toggle (ionChange)="showFilters($event)"></ion-toggle>
@@ -102,3 +104,4 @@
     <br/><br/><br/>
   </div>
 </div>
+</ion-content>

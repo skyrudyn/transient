@@ -38,11 +38,16 @@ export class FirstViewPage {
   
     loading.present();
     this.service.getJobList().subscribe(res => {
-      this.alljob = res;
+      if(res.successful){
+      this.alljob = res.response;
       this.alljob.forEach(r=>{
         this.alljobs.push(r);
       })
-      loading.dismiss();
+    }else{
+      this.alljob = null;
+      
+    }
+    loading.dismiss();
     });
     
   }

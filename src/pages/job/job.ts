@@ -68,7 +68,7 @@ export class JobPage {
         }
         console.log(value)
       let applicantId = sessionStorage.getItem('Id');
-      this.service.applyJob(data.eventId,applicantId,gender,data.participantType,value).subscribe(res=>{
+      this.service.applyJob(data.eventId,applicantId,gender,data.participantType,value,data.createdBy).subscribe(res=>{
         if(res.successful){
           loading.dismiss()
           this.presentToast(res.message);

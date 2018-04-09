@@ -31,6 +31,9 @@ export class AppliedJobPage {
     console.log('ionViewDidLoad AppliedJobPage');
   }
   ngOnInit() {
+    this.loadingJob();
+  }
+  loadingJob(){
     let loading = this.loadingCtrl.create({
       content: 'Loading...'
     });
@@ -39,18 +42,21 @@ export class AppliedJobPage {
     if (sessionStorage.getItem('Id')) {
       let applicantId = sessionStorage.getItem('Id');
       this.service.getAppliedJob(applicantId).subscribe(res => {
-        this.appliedJob = res;
+        this.appliedJob = res.response;
+        console.log(res,"applied")
         this.service.getJobList().subscribe(res => {
-          this.job = res;
+          this.job = res.response;
+          console.log(res,"event")
           this.job.forEach(j => {
             this.appliedJob.forEach(sj => {
               if (sj.jobId == j.eventId) {
                 j.status = sj.status;
-                this.appliedJobList.push(j);
+                  this.appliedJobList.push(j);
               }
             })
           })
           loading.dismiss();
+          console.log(this.appliedJobList)
         });
       });
     } else {
@@ -70,6 +76,7 @@ export class AppliedJobPage {
       this.service.cancelJob(applicantId,j.eventId).subscribe(res => {
         if(res.successful){
           loading.dismiss();
+          this.loadingJob();
           this.presentToast(res.message)
         }else{
           loading.dismiss()

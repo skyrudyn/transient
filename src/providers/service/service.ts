@@ -41,12 +41,12 @@ export class ServiceProvider {
     });
 
   }
-  public applyJob(jobId,applicantId,gender,participantType,value) {
+  public applyJob(jobId,applicantId,gender,participantType,value,createdBy) {
     let url = '{url}/applyjob.php'
               .replace(/\{url\}/g, this.apiUrl)
     this.headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
     let params = "jobId="+jobId + "&applicantId=" + applicantId + '&gender=' + gender +
-                 '&participantType=' +participantType+ '&value='+value;
+                 '&participantType=' +participantType+ '&value='+value+ '&createdBy=' +createdBy;
     return this.http.post(url, params, { headers: this.headers }).map((res: Response) => {
       return res.json();
     });

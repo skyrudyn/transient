@@ -5,7 +5,7 @@
                 <ion-title>Job Detail </ion-title>
             </ion-col>
             <ion-col end>
-                <ion-icon name="md-star" *ngIf="isSaved" style="text-align:end;zoom:1.5;color:gold;"></ion-icon>
+                <ion-icon name="md-star" *ngIf="isSaved" (click)="save(data)" style="text-align:end;zoom:1.5;color:gold;"></ion-icon>
                 <ion-icon name="md-star" *ngIf="!isSaved" style="text-align:end;zoom:1.5"></ion-icon>
             </ion-col>
         </ion-row>

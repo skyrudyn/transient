@@ -37,12 +37,13 @@ export class SavedJobPage {
     if(sessionStorage.getItem('Id')){
     let applicantId = sessionStorage.getItem('Id');
     this.service.getSavedJob(applicantId).subscribe(res => {
-      this.savedJob = res;
+      this.savedJob = res.response;
       this.service.getJobList().subscribe(res => {
-        this.job = res;  
+        this.job = res.response;  
         this.job.forEach(j=>{
           this.savedJob.forEach(sj=>{
             if(sj.jobId == j.eventId){
+              j.status = sj.status;
               this.savedJobList.push(j);
             } 
           })
