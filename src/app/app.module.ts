@@ -21,6 +21,7 @@ import { ServiceProvider } from '../providers/service/service';
 import { HttpModule } from '@angular/http';
 
 import { CalendarModule } from "ion2-calendar";
+import { Ionic2RatingModule } from 'ionic2-rating';
 @NgModule({
   declarations: [
     MyApp,
@@ -41,6 +42,7 @@ import { CalendarModule } from "ion2-calendar";
     RegisterPageModule,
     RegisterVerifyPageModule,
     AppliedJobPageModule,
+    Ionic2RatingModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

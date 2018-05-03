@@ -30,7 +30,8 @@
                         <br/>
                       </div>
                       <div style="text-align:center">
-                          <button ion-button block style="width:100%" *ngIf="jobs.status == 0">PENDING APPROVAL</button>
+                          <button ion-button block style="width:100%" (click)="applyCheck(jobs)" *ngIf="jobs.status == 0 && jobs.type == 2">APPLY</button>
+                          <button ion-button block style="width:100%" *ngIf="jobs.status == 0 && jobs.type == 1">PENDING APPROVAL</button>
                           <button ion-button block style="width:100%" color="secondary" *ngIf="jobs.status == 1">APPROVED</button>
                           <button ion-button block style="width:100%" color="danger" *ngIf="jobs.status == 2">REJECTED</button>
                           <!-- <button ion-button block style="width:100%" color="danger" (click)="cancel(jobs)" *ngIf="jobs.status == 0">Cancel Application</button> -->

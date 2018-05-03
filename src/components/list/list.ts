@@ -15,7 +15,6 @@ export class ListComponent {
   text: string;
 
   constructor() {
-    console.log('Hello ListComponent Component');
     this.text = 'Hello World';
   }
 

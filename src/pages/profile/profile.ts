@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
+import { ServiceProvider } from '../../providers/service/service';
 
 /**
  * Generated class for the ProfilePage page.
@@ -14,12 +15,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'profile.html',
 })
 export class ProfilePage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  profile:any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, 
+    public service: ServiceProvider, 
+    private toastCtrl: ToastController, 
+    public loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfilePage');
   }
-
+  save(){
+    
+  }
+  ngOnInit(){
+    if(!sessionStorage.getItem('Id')){
+      this.navCtrl.push('LoginPage');
+    }else{
+    this.service.getApplicantById(sessionStorage.getItem('Id')).subscribe(data=>{
+      this.profile = data;
+    })
+  }
+  }
 }

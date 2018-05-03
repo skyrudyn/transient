@@ -38,11 +38,9 @@ export class RegisterPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad RegisterPage');
   }
 
   goto(p) {
-    console.log(p)
     this.navCtrl.push(p);
   } 
   
@@ -67,7 +65,6 @@ export class RegisterPage {
     }
   }
   signup(s) {
-    console.log(s)
     let loading = this.loadingCtrl.create({
       content: 'Loading...'
     });

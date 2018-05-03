@@ -28,7 +28,6 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
     sessionStorage.clear();
   }
   goReset() {
@@ -56,7 +55,6 @@ export class LoginPage {
       content: 'Loading...'
     });
     loading.present();
-    console.log(form.username, form.password)
     if (form.username != '' || form.password != '') {
       let userCredential = { 'username': form.username, 'password': form.password };
 
@@ -80,7 +78,7 @@ export class LoginPage {
         }
       loading.dismiss();
       }, error => {
-        this.presentToast("Service temporarily not available")
+        this.presentToast("Service temporarresily not available")
       });
     } else {
       loading.dismiss();

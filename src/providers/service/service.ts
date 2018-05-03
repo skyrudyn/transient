@@ -12,10 +12,9 @@ import { Injectable } from '@angular/core';
 */
 @Injectable()
 export class ServiceProvider {
-  apiUrl: any = "https://transientservitor.my/backend";
+  apiUrl: any = "http://transientservitor.my/backend";
   headers = new Headers();
   constructor(public http: Http) {
-    console.log('Hello ServiceProvider Provider');
   }
 
  
@@ -62,6 +61,21 @@ export class ServiceProvider {
     });
 
   }
+
+  public rate(jobId,rating,applicantId) {
+    let url = '{url}/rate.php?jobId={jobId}&rating={rating}&applicantId={applicantId}'
+              .replace(/\{url\}/g, this.apiUrl)
+              .replace(/\{jobId\}/g, jobId)
+              .replace(/\{rating\}/g, rating)
+              .replace(/\{applicantId\}/g, applicantId)
+    // this.headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+    // let params = "jobId="+jobId + "&rating=" + rating + "&applicantId=" +applicantId;
+    return this.http.get(url).map((res: Response) => {
+      return res.json();
+    });
+
+  }
+
   public getJobList() {
     let url = '{url}/getEvent.php'
               .replace(/\{url\}/g, this.apiUrl)
@@ -85,14 +99,30 @@ export class ServiceProvider {
       return res.json();
     });
   }
-  public cancelJob(applicantId,jobId) {
-    let url = '{url}/cancelJob.php'
+  public getRatedJob(applicantId) {
+    let url = '{url}/getRate.php?applicantId={applicantId}'
               .replace(/\{url\}/g, this.apiUrl)
-    this.headers.append('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-    let params = "jobId="+jobId + "&applicantId=" + applicantId;
-    return this.http.post(url, params, { headers: this.headers }).map((res: Response) => {
+              .replace(/\{applicantId\}/g,applicantId)
+    return this.http.get(url).map((res: Response) => {
       return res.json();
     });
+  }
+  public cancelJob(applicantId,jobId) {
+    let url = '{url}/cancelJob.php?applicationId={applicationId}&jobId={jobId}'
+              .replace(/\{url\}/g, this.apiUrl)
+              .replace(/\{applicantId\}/g,applicantId)
+              .replace(/\{jobId\}/g,jobId)
 
+    return this.http.get(url).map((res: Response) => {
+      return res.json();
+    });
+  }
+  public getApplicantById(applicantId) {
+    let url = '{url}/getApplicantById.php?applicantId={applicantId}'
+      .replace(/\{url\}/g, this.apiUrl)
+      .replace(/\{applicantId\}/g, applicantId)
+    return this.http.get(url).map((res: Response) => {
+      return res.json();
+    });
   }
  }

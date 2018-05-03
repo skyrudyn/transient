@@ -23,7 +23,6 @@ export class JobPage {
     private toastCtrl: ToastController,
     public loadingCtrl: LoadingController) {
     this.data = this.navParams.get('data');
-    console.log(this.data)
   }
   ngOnInit(){
     // if(sessionStorage.getItem('LoggedIn') == '1'){
@@ -66,7 +65,6 @@ export class JobPage {
         }else if(data.participantType == 4){
           value = data.mixed - 1
         }
-        console.log(value)
       let applicantId = sessionStorage.getItem('Id');
       this.service.applyJob(data.eventId,applicantId,gender,data.participantType,value,data.createdBy).subscribe(res=>{
         if(res.successful){

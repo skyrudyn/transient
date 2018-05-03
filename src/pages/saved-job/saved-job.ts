@@ -39,15 +39,24 @@ export class SavedJobPage {
     this.service.getSavedJob(applicantId).subscribe(res => {
       this.savedJob = res.response;
       this.service.getJobList().subscribe(res => {
-        this.job = res.response;  
+        this.job = res.response; 
+        if(this.job){ 
         this.job.forEach(j=>{
+          if(this.savedJob){
           this.savedJob.forEach(sj=>{
             if(sj.jobId == j.eventId){
               j.status = sj.status;
+              j.type = sj.type
               this.savedJobList.push(j);
             } 
           })
+        }else{
+          this.presentToast(res.error)
+        }
         })
+      }else{
+        this.presentToast(res.error)
+      } 
         loading.dismiss();
       });
     });
@@ -72,7 +81,6 @@ export class SavedJobPage {
   }
   applyCheck(job){
     if(sessionStorage.getItem('LoggedIn') == '1'){
-      console.log("loggedIn")
       this.navCtrl.push('JobPage',{data:job});
     }else{
       this.navCtrl.push('LoginPage',{data:job});

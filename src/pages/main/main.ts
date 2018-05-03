@@ -21,14 +21,11 @@ export class MainPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MainPage');
     this.service.getJobList().subscribe(res => {
       this.allJob = res;
     })
-    console.log(this.allJob);
   }
   viewJob(data){
-    console.log(data)
     this.navCtrl.push('JobPage',{data:data});
   }
 }

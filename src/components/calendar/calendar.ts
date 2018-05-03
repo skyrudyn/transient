@@ -15,7 +15,6 @@ export class CalendarComponent {
   text: string;
 
   constructor() {
-    console.log('Hello CalendarComponent Component');
     this.text = 'Hello World';
   }
 

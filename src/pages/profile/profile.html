@@ -1,70 +1,56 @@
-
 <ion-header>
-    <ion-navbar hideBackButton>
 
+    <ion-navbar hideBackButton>
         <button ion-button icon-only menuToggle>
             <ion-icon name="menu"></ion-icon>
         </button>
-    <ion-title>Profile</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
-<!--
+      <ion-title>Profile</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
 <ion-content padding>
-        <ion-content>
-          <div class="div_form" padding>
-              <h2 text-center>Details</h2>
-              <form [formGroup]="sform">
-              <ion-item class="form-item">        
-                  <ion-label> <ion-icon name="contact"></ion-icon></ion-label>
-                  <ion-input clearInput type="text" placeholder="Name" formControlName="name"></ion-input>
-              </ion-item>
-              <ion-item class="form-item">        
-                  <ion-label> <ion-icon name="contact"></ion-icon></ion-label>
-                  <ion-input clearInput type="text" placeholder="UserName" formControlName="uname"></ion-input>
-              </ion-item>
-              <ion-item class="form-item">        
-                  <ion-label> <ion-icon name="mail"></ion-icon></ion-label>
-                  <ion-input clearInput type="email" placeholder="Email" formControlName="email"></ion-input>
-              </ion-item>
-              <ion-item class="form-item">        
-                  <ion-label> <ion-icon name="md-alert"></ion-icon></ion-label>
-                  <ion-input clearInput type="number" placeholder="IC Number" formControlName="ic"></ion-input>
-              </ion-item>
-              <ion-item class="form-item">        
-                  <ion-label> <ion-icon name="phone-portrait"></ion-icon></ion-label>
-                  <ion-input clearInput type="tel" placeholder="&nbsp;Phone Number" formControlName="phone"></ion-input>
-              </ion-item>    
-              <ion-item class="form-item" text-wrap>    
-                  <ion-label style="min-width: 8% !important;max-width: 8% !important;"><ion-icon name="ios-contacts"></ion-icon> </ion-label>  
-                  <ion-select formControlName="gender" placeholder="Gender" text-wrap>
-                      <ion-option value="1">Male</ion-option>
-                      <ion-option value="2">Female</ion-option>
-                  </ion-select>
-              </ion-item>
-              <ion-item class="form-item">        
-                  <ion-label> <ion-icon name="md-medal"></ion-icon></ion-label>
-                  <ion-input clearInput type="number" placeholder="Age" formControlName="age"></ion-input>
-              </ion-item>
-              <ion-item class="form-item">        
-                  <ion-label> <ion-icon name="md-medkit"></ion-icon>&nbsp;&nbsp;&nbsp; <span style="color:grey" text-wrap>Taken Typhoid</span></ion-label>
-                  <ion-toggle type="password" formControlName="typhodStatus" (ionChange)="toggled($event)"></ion-toggle>
-              </ion-item>
-              <ion-item class="form-item">        
-                  <ion-label> <ion-icon name="md-home"></ion-icon></ion-label>
-                  <ion-input clearInput type="textarea" placeholder="Address" formControlName="address"></ion-input>
-              </ion-item>
-              <ion-item class="form-item">        
-                  <ion-label> <ion-icon name="lock"></ion-icon></ion-label>
-                  <ion-input type="password" formControlName="password" placeholder="Password"></ion-input>
-              </ion-item>
-              <div text-center padding><ion-checkbox formControlName="isterms"></ion-checkbox> I accept the Terms of Use</div>
-              <button ion-button full round color="jblue" (click)="signup(sform.value)">Signup</button>
-            </form>
-          </div>
-      
-          <div class="div_login" (click)="goto('LoginPage')" text-center>
-              Already a member? Login
-          </div>
-</ion-content> -->
+
+
+    <form>
+        <div align="center">
+            <img class="profile-image" src="assets/imgs/profile.png">
+        </div>
+        <ion-list *ngIf="profile">
+            <ion-item>
+                <ion-label floating>Name{{profile.name}}</ion-label>
+                <ion-input type="text" [(ngModel)]="profile.name" name="name"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>IC Number</ion-label>
+                <ion-input type="number" [(ngModel)]="profile.icNo" name="icNo"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Email</ion-label>
+                <ion-input type="email" [(ngModel)]="profile.email" name="email"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Address</ion-label>
+                <ion-input type="text" [(ngModel)]="profile.address" name="address"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Age</ion-label>
+                <ion-input type="number" [(ngModel)]="profile.age" name="age"></ion-input>
+            </ion-item>
+            <!-- <ion-item>
+          <ion-label>Company</ion-label>
+          <ion-select name="company" required>
+            <ion-option value="Maybank">Maybank</ion-option>
+            <ion-option value="CIMB">CIMB</ion-option>
+            <ion-option value="Public Bank">Public Bank</ion-option>
+          </ion-select>
+        </ion-item> -->
+            <!-- <ion-item>
+            <ion-label >Birth Date</ion-label>
+            <ion-datetime required name="birthdate" displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY" [(ngModel)]="dob" [ngModelOptions]="{standalone:true}"></ion-datetime>
+        </ion-item> -->
+
+        </ion-list>
+        <!-- <button color="secondary" [disabled]="!formCtrl.form.valid" ion-button block (click)="save()">Save</button>-->
+        <button color="secondary" ion-button block (click)="save()">Save</button>
+    </form>
+</ion-content>

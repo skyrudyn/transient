@@ -20,7 +20,6 @@ export class MyApp {
     });
   }
   openPage(p) {
-    console.log(p)
     this.rootPage = p;
   }
 }

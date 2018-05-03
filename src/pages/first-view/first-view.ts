@@ -60,7 +60,6 @@ export class FirstViewPage {
     })
   }
   showFilters(ev){
-    console.log(ev)
     if(ev.value){
       this.showFilter = true;
     }else{
@@ -85,7 +84,6 @@ export class FirstViewPage {
 
   applyCheck(job){
     if(sessionStorage.getItem('LoggedIn') == '1'){
-      console.log("loggedIn")
       this.navCtrl.push('JobPage',{data:job});
     }else{
       this.navCtrl.push('LoginPage',{data:job});

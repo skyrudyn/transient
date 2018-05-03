@@ -28,7 +28,6 @@ export class AppliedJobPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AppliedJobPage');
   }
   ngOnInit() {
     this.loadingJob();
@@ -43,20 +42,25 @@ export class AppliedJobPage {
       let applicantId = sessionStorage.getItem('Id');
       this.service.getAppliedJob(applicantId).subscribe(res => {
         this.appliedJob = res.response;
-        console.log(res,"applied")
         this.service.getJobList().subscribe(res => {
           this.job = res.response;
-          console.log(res,"event")
+          if(this.job){
           this.job.forEach(j => {
+            if(this.appliedJob){
             this.appliedJob.forEach(sj => {
               if (sj.jobId == j.eventId) {
                 j.status = sj.status;
                   this.appliedJobList.push(j);
               }
             })
+          }else{
+            this.presentToast(res.error);
+          }
           })
+        }else{
+          this.presentToast(res.error);
+        }
           loading.dismiss();
-          console.log(this.appliedJobList)
         });
       });
     } else {
@@ -76,6 +80,7 @@ export class AppliedJobPage {
       this.service.cancelJob(applicantId,j.eventId).subscribe(res => {
         if(res.successful){
           loading.dismiss();
+          this.appliedJobList = [];
           this.loadingJob();
           this.presentToast(res.message)
         }else{
@@ -104,7 +109,6 @@ export class AppliedJobPage {
   }
   applyCheck(job) {
     if (sessionStorage.getItem('LoggedIn') == '1') {
-      console.log("loggedIn")
       this.navCtrl.push('JobPage', { data: job });
     } else {
       this.navCtrl.push('LoginPage', { data: job });
